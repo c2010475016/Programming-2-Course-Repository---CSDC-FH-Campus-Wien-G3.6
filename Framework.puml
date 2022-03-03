@@ -1,0 +1,50 @@
+@startuml
+'https://plantuml.com/de/class-diagram
+skinparam classAttributeIconSize 0
+
+class App{
++main(String[] args)
+}
+
+class Menu{
+-controller : AppController
+-{static} final INVALID_INPUT_MESSAGE : String
+-{static} final EXIT_MESSAGE : String
+
+public start() : void
+-handleInput(String input) : void
+-getArticleCount(AppController ctrl) : void
+-getTopHeadlinesAustria(AppController ctrl) : void
+-getAllNewsBitcoin(AppController ctrl) : void
+-{static} printExitMessage() : void
+-{static} printInvalidInputMessage() : void
+-{static} printMenu() : void
+}
+
+class AppController{
+-articles : List<Article>
++AppController()
++setArticles(List<Article> articles) : void
++getArticleCount() : int
++getTopHeadlinesAustria() : List<Article>
++getAllNewsBitcoin() : List<Article>
+#filterList(String query, List<Article> articles)\n : List<Article>
+-{static} generateMockList() : List<Article>
+}
+
+class Article{
+-author : String
+-title : String
+
++Article(String author, String title)
++getAuthor() : String
++getTitle() : String
++toString() : String
+}
+
+App "1 " --> "1 " Menu : starts
+Article "0..* " --o "1 " AppController
+AppController "1 " --o "1 " Menu
+'App -[hidden]--> AppController
+'Article -[hidden]--> App
+@enduml
