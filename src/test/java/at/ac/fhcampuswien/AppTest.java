@@ -40,6 +40,16 @@ public class AppTest {
         assertEquals(6,testFilterList.size());
     }
 
+    @Test
+    @DisplayName("Filter List Filtering Test Null Query Parameter")
+    public void testFilterListFilteringTestNullQueryParameter() {
+        AppController appCon = new AppController();
+        List<Article> testFilterList = new ArrayList<>();
+        testFilterList = appCon.filterList(null, generateMockList());
+        assertNotNull(testFilterList);
+        assertEquals(0,testFilterList.size());
+    }
+
     //region helper
     private List<Article> generateMockList(){
         List<Article> dummyList = new ArrayList<>();
