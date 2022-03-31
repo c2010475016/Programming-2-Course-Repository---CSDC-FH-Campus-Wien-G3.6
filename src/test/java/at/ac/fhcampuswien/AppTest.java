@@ -12,13 +12,23 @@ import static org.junit.jupiter.api.Assertions.*; //Alle Methoden der Klasse wer
 public class AppTest {
 
     @Test
-    @DisplayName("Filter List Filtering Test")
-    public void testFilterListFilteringTest() {
+    @DisplayName("Filter List Filtering After Non Existing Article")
+    public void testFilterListFilteringAfterNonExistingArticles() {
         AppController appCon = new AppController();
         List<Article> testFilterList = new ArrayList<>();
-        testFilterList = appCon.filterList("Bitcoin", generateMockList());
+        testFilterList = appCon.filterList("Dog", generateMockList());
         assertNotNull(testFilterList);
-        assertEquals(0,testFilterList.size()); //0, weil es 0 Bitcoin Artikel gibt
+        assertEquals(0,testFilterList.size()); //0, weil es 0 "Dog" Artikel gibt
+    }
+
+    @Test
+    @DisplayName("Filter List Filtering Test")
+    public void testFilterListFilteringTestForExistingArticles() {
+        AppController appCon = new AppController();
+        List<Article> testFilterList = new ArrayList<>();
+        testFilterList = appCon.filterList("Title", generateMockList());
+        assertNotNull(testFilterList);
+        assertEquals(6,testFilterList.size()); //6, weil es 6 Title Artikel gibt
     }
 
     //region helper
@@ -32,5 +42,4 @@ public class AppTest {
         return dummyList;
     }
     //endregion
-
 }
