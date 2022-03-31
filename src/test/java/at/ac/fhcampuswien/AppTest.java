@@ -60,6 +60,18 @@ public class AppTest {
         assertEquals(0,testFilterList.size());
     }
 
+    @Test
+    @DisplayName("Filter List Filtering Test With Null Element")
+    public void testFilterListTestListWithNullElement() {
+        AppController appCon = new AppController();
+        List<Article> testFilterList = new ArrayList<>();
+        List<Article> inputParameter = generateMockList(); //new list for null element
+        inputParameter.add(null);
+        testFilterList = appCon.filterList("", inputParameter);
+        assertNotNull(testFilterList);
+        assertEquals(0,testFilterList.size());
+    }
+
     //region helper
     private List<Article> generateMockList(){
         List<Article> dummyList = new ArrayList<>();
