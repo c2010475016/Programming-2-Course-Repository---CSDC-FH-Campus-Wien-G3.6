@@ -69,7 +69,7 @@ public class AppTest {
         inputParameter.add(null);
         testFilterList = appCon.filterList("", inputParameter);
         assertNotNull(testFilterList);
-        assertEquals(0,testFilterList.size());
+        assertEquals(6,testFilterList.size());
     }
 
     //region helper

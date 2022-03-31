@@ -38,9 +38,9 @@ public class AppController {
             return Collections.emptyList(); // oder articles
         }
 
-        articles.forEach(article -> { // forEach geht jedes Element in article durch, dadurch Zugriff auf einen spezifischen Artikel
-            if (article.getTitle().toLowerCase().contains(query.toLowerCase())) { // Groß/Kleinschreibung wird nicht beachtet
-                tempFilterList.add(article); // Liste wird mit diesen gefilterten Artikel befüllt
+        articles.forEach(articleElement -> { // forEach geht jedes Element in articleElement durch, dadurch Zugriff auf einen spezifischen Artikel
+            if (articleElement != null && articleElement.getTitle().toLowerCase().contains(query.toLowerCase())) { // Groß/Kleinschreibung wird nicht beachtet
+                tempFilterList.add(articleElement); // Liste wird mit diesen gefilterten Artikel befüllt
             }
         });
         return tempFilterList; //neue Liste zurückgeben
