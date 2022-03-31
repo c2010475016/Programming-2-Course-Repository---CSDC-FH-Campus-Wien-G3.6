@@ -31,7 +31,7 @@ public class AppController {
         List<Article> tempFilterList = new ArrayList<>(); //temporäre Zwischenliste für die neuen Artikel mit Query speichern
 
         articles.forEach(article -> { // forEach geht jedes Element in article durch, dadurch Zugriff auf einen spezifischen Artikel
-            if (article.getTitle().contains(query)) {
+            if (article.getTitle().toLowerCase().contains(query.toLowerCase())) { // Groß/Kleinschreibung wird nicht beachtet
                 tempFilterList.add(article); // Liste wird mit diesen gefilterten Artikel befüllt
             }
         });
