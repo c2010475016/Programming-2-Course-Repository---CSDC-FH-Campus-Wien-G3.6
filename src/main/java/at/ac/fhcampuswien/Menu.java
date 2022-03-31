@@ -2,8 +2,8 @@ package at.ac.fhcampuswien;
 
 public class Menu {
     private AppController controller;
-    private static final String INVALID_INPUT_MESSAGE = "INVALID INPUT MESSAGE";
-    private static final String EXIT_MESSAGE = "HASTA LA VISTA";
+    private static final String INVALID_INPUT_MESSAGE = "";
+    private static final String EXIT_MESSAGE = "";
 
     public void start() {
 
