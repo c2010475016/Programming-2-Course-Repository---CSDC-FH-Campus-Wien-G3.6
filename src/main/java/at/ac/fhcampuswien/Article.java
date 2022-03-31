@@ -19,6 +19,6 @@ public class Article {
     }
 
     public String toString() {
-        return "test";
+        return "Author: " + this.author + " Title: " + this.title;
     }
 }

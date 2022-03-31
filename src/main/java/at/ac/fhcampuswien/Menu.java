@@ -34,6 +34,18 @@ public class Menu {
     }
 
     private static void printMenu() {
+        System.out.print("""
+                **************************
+                *   Welcome to NewsApp   *
+                **************************
 
+
+                Enter what you want to do:
+                
+                a: Get top headlines from Austria
+                b: Get all news about bitcoin
+                y: Count all articles
+                q: Quit
+                """);
     }
 }

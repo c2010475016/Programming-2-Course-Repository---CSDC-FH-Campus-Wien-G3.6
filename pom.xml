@@ -30,5 +30,12 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.surefire/surefire-booter -->
+        <dependency>
+            <groupId>org.apache.maven.surefire</groupId>
+            <artifactId>surefire-booter</artifactId>
+            <version>3.0.0-M5</version>
+        </dependency>
+
     </dependencies>
 </project>
