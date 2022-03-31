@@ -28,7 +28,14 @@ public class AppController {
     }
 
     protected List<Article> filterList(String query, List<Article> articles){
-        return articles;
+        List<Article> tempFilterList = new ArrayList<>(); //temporäre Zwischenliste für die neuen Artikel mit Query speichern
+
+        articles.forEach(article -> { // forEach geht jedes Element in article durch, dadurch Zugriff auf einen spezifischen Artikel
+            if (article.getTitle().contains(query)) {
+                tempFilterList.add(article); // Liste wird mit diesen gefilterten Artikel befüllt
+            }
+        });
+        return tempFilterList; //neue Liste zurückgeben
     }
 
     private static List<Article> generateMockList(){
