@@ -32,6 +32,12 @@ public class AppController {
     }
 
     private static List<Article> generateMockList(){
-        return null;
+        List<Article> dummyList = new ArrayList<>();
+
+        for (int i = 0; i <= 5; i++) { //dummyList wird mit verschiedenen Werten befüllt
+            Article article = new Article("author" + i, "title" + i);
+            dummyList.add(article);
+        }
+        return dummyList;
     }
 }
