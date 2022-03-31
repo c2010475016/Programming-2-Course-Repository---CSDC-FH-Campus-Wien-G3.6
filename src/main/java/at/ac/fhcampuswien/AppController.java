@@ -31,6 +31,9 @@ public class AppController {
     protected List<Article> filterList(String query, List<Article> articles){
         List<Article> tempFilterList = new ArrayList<>(); //temporäre Zwischenliste für die neuen Artikel mit Query speichern
 
+        if (articles == null) { // für Nullpointer Exception
+            return Collections.emptyList(); // return empty list oder new Arraylist
+        }
         if (query == null) {
             return Collections.emptyList(); // oder articles
         }
