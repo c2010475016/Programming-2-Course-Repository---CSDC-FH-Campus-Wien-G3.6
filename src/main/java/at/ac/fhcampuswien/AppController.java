@@ -25,7 +25,7 @@ public class AppController {
     }
 
     public List<Article> getAllNewsBitcoin() {
-        return articles;
+        return filterList("bitcoin",articles); //die articles gefiltert
     }
 
     protected List<Article> filterList(String query, List<Article> articles){
