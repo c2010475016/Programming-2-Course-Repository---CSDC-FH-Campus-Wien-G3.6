@@ -21,12 +21,17 @@ public class TopHeadlinesAustriaTest {
         assertEquals(articles.toString(),testHeadlinesAustriaList.toString());
     }
 
-    //TODO: Null list
-//    @Test
-//    @DisplayName("getTopHeadlinesAustria2")
-//    public void testGetTopHeadlinesAustria2() {
 
-//    }
+    @Test
+    @DisplayName("Headlines Austria: get Top Headlines Austria with Empty List Parameter")
+    public void testGetTopHeadlinesAustriaWithEmptyListParameter() {
+        AppController appCon = new AppController();
+        List<Article> testHeadlinesAustriaList;
+
+        testHeadlinesAustriaList = appCon.getTopHeadlinesAustria();
+//        assertNotNull(testHeadlinesAustriaList);
+        assertEquals(0,testHeadlinesAustriaList.size());
+    }
 
 
 
