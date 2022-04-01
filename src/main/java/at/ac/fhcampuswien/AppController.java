@@ -25,6 +25,9 @@ public class AppController {
     }
 
     public List<Article> getTopHeadlinesAustria(){
+        if (articles == null) { // für Nullpointer Exception
+            return Collections.emptyList(); // return empty list oder new Arraylist
+        }
         return articles;
     }
 
