@@ -11,40 +11,23 @@ import static org.junit.jupiter.api.Assertions.*; //Alle Methoden der Klasse wer
 public class SetArticlesTest {
 
     @Test
-    @DisplayName("setArticles1")
-    public void testSetArticles1() {
-//        AppController appCon = new AppController();
-//        List<Article> testFilterList = new ArrayList<>();
-//        testFilterList = appCon.filterList("Dog", generateMockList());
-//        assertNotNull(testFilterList); //Für Nullpointerexception
-//        assertEquals(0,testFilterList.size()); //0, weil es 0 "Dog" Artikel gibt
-    }
+    @DisplayName("Set Articles: test setting articles")
+    public void testSetArticlesAddingArticles() {
+        AppController appCon = new AppController();
+        List<Article> inputParameter = generateMockList();   //some List to set the Article-to-add into
+        Article someArticleToAdd = new Article("Me","I am smart!"); //Article to be added
+        inputParameter.add(someArticleToAdd);
+        appCon.setArticles(inputParameter); // <-- to be tested
 
-    @Test
-    @DisplayName("setArticles2")
-    public void testSetArticles2() {
-//        AppController appCon = new AppController();
-//        List<Article> testFilterList = new ArrayList<>();
-//        testFilterList = appCon.filterList("Dog", generateMockList());
-//        assertNotNull(testFilterList); //Für Nullpointerexception
-//        assertEquals(0,testFilterList.size()); //0, weil es 0 "Dog" Artikel gibt
-    }
-
-    @Test
-    @DisplayName("setArticles3")
-    public void testSetArticles3() {
-//        AppController appCon = new AppController();
-//        List<Article> testFilterList = new ArrayList<>();
-//        testFilterList = appCon.filterList("Dog", generateMockList());
-//        assertNotNull(testFilterList); //Für Nullpointerexception
-//        assertEquals(0,testFilterList.size()); //0, weil es 0 "Dog" Artikel gibt
+        assertNotNull(inputParameter); //For Null-pointer-exception
+        assertEquals(appCon.getArticles().toString(), inputParameter.toString()); //set articles, articles to be set
     }
 
     //region helper
     private List<Article> generateMockList(){
         List<Article> dummyList = new ArrayList<>();
 
-        for (int i = 0; i <= 5; i++) { //dummyList wird mit verschiedenen Werten befüllt
+        for (int i = 0; i <= 1; i++) { //dummyList filled with dummy articles
             Article article = new Article("author" + i, "title" + i);
             dummyList.add(article);
         }

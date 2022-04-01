@@ -13,7 +13,10 @@ public class AppController {
     }
 
     public void setArticles(List<Article> articles) {
-        this.articles = articles;
+    }
+
+    public List<Article> getArticles() {
+        return articles;
     }
 
     public int getArticleCount() {
