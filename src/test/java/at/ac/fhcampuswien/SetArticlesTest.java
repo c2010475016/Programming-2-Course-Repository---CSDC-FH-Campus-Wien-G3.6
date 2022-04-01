@@ -14,13 +14,10 @@ public class SetArticlesTest {
     @DisplayName("Set Articles: test setting articles")
     public void testSetArticlesAddingArticles() {
         AppController appCon = new AppController();
-        List<Article> inputParameter = generateMockList();   //some List to set the Article-to-add into
-        Article someArticleToAdd = new Article("Me","I am smart!"); //Article to be added
-        inputParameter.add(someArticleToAdd);
-        appCon.setArticles(inputParameter); // <-- to be tested
+        appCon.setArticles(listToSet()); // <-- to be tested
 
-        assertNotNull(inputParameter); //For Null-pointer-exception
-        assertEquals(appCon.getArticles().toString(), inputParameter.toString()); //set articles, articles to be set
+        assertNotNull(listToSet()); //For Null-pointer-exception
+        assertEquals(appCon.getArticles().toString(), listToSet().toString()); //set articles, articles to be set
     }
 
     //region helper
@@ -32,6 +29,13 @@ public class SetArticlesTest {
             dummyList.add(article);
         }
         return dummyList;
+    }
+
+    private List<Article> listToSet(){
+        Article someArticleToAdd = new Article("Me","I am smart!"); //Article to be added
+        List<Article> setList = generateMockList();
+        setList.add(someArticleToAdd);
+        return setList;
     }
     //endregion
 }
