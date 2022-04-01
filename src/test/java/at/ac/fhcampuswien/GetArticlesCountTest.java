@@ -18,6 +18,13 @@ public class GetArticlesCountTest {
         assertEquals(generateMockList().size()+1, appCon.getArticleCount());
     }
 
+    @Test
+    @DisplayName("Testing Article count with Null articles")
+    public void testArticlesCountWithNullArticles(){
+        AppController appCon = new AppController();
+        appCon.setArticles(null);
+        assertEquals(0, appCon.getArticleCount());
+    }
 
     //region helper
     private List<Article> generateMockList(){
