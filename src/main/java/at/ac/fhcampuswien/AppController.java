@@ -13,6 +13,7 @@ public class AppController {
     }
 
     public void setArticles(List<Article> articles) {
+        this.articles = articles;
     }
 
     public List<Article> getArticles() {
