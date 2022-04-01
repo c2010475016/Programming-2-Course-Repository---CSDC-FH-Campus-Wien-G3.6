@@ -21,7 +21,7 @@ public class AppController {
     }
 
     public int getArticleCount() {
-        return 0;
+        return articles.size();
     }
 
     public List<Article> getTopHeadlinesAustria(){
