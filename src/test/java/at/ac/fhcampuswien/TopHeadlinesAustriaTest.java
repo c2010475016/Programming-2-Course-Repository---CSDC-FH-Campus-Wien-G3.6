@@ -11,47 +11,28 @@ import static org.junit.jupiter.api.Assertions.*; //Alle Methoden der Klasse wer
 public class TopHeadlinesAustriaTest {
 
     @Test
-    @DisplayName("getTopHeadlinesAustria1")
-    public void testGetTopHeadlinesAustria1() {
-//        AppController appCon = new AppController();
-//        List<Article> testFilterList = new ArrayList<>();
-//        testFilterList = appCon.filterList("Dog", generateMockList());
-//        assertNotNull(testFilterList); //Für Nullpointerexception
-//        assertEquals(0,testFilterList.size()); //0, weil es 0 "Dog" Artikel gibt
+    @DisplayName("Headlines Austria: get Top Headlines Austria with articles")
+    public void testGetTopHeadlinesAustria() {
+        AppController appCon = new AppController();
+        List<Article> testHeadlinesAustriaList;
+
+        testHeadlinesAustriaList = appCon.getTopHeadlinesAustria();
+        assertNotNull(testHeadlinesAustriaList);
+        assertEquals(articles.toString(),testHeadlinesAustriaList.toString());
     }
 
-    @Test
-    @DisplayName("getTopHeadlinesAustria2")
-    public void testGetTopHeadlinesAustria2() {
-//        AppController appCon = new AppController();
-//        List<Article> testFilterList = new ArrayList<>();
-//        testFilterList = appCon.filterList("Dog", generateMockList());
-//        assertNotNull(testFilterList); //Für Nullpointerexception
-//        assertEquals(0,testFilterList.size()); //0, weil es 0 "Dog" Artikel gibt
-    }
+    //TODO: Null list
+//    @Test
+//    @DisplayName("getTopHeadlinesAustria2")
+//    public void testGetTopHeadlinesAustria2() {
 
-    @Test
-    @DisplayName("getTopHeadlinesAustria3")
-    public void testGetTopHeadlinesAustria3() {
-//        AppController appCon = new AppController();
-//        List<Article> testFilterList = new ArrayList<>();
-//        testFilterList = appCon.filterList("Dog", generateMockList());
-//        assertNotNull(testFilterList); //Für Nullpointerexception
-//        assertEquals(0,testFilterList.size()); //0, weil es 0 "Dog" Artikel gibt
-    }
+//    }
 
-    @Test
-    @DisplayName("getTopHeadlinesAustria4")
-    public void testGetTopHeadlinesAustria4() {
-//        AppController appCon = new AppController();
-//        List<Article> testFilterList = new ArrayList<>();
-//        testFilterList = appCon.filterList("Dog", generateMockList());
-//        assertNotNull(testFilterList); //Für Nullpointerexception
-//        assertEquals(0,testFilterList.size()); //0, weil es 0 "Dog" Artikel gibt
-    }
 
+
+// -----------------------------------------------------------------------------------------------------------------//
     //region helper
-    private List<Article> generateMockList(){
+    private List<Article> generateMockList() {
         List<Article> dummyList = new ArrayList<>();
 
         for (int i = 0; i <= 5; i++) { //dummyList wird mit verschiedenen Werten befüllt
@@ -60,5 +41,13 @@ public class TopHeadlinesAustriaTest {
         }
         return dummyList;
     }
+
+    private List<Article> listToSet(){   //dummy list extended, list to be used in setter
+        Article someArticleToAdd = new Article("Me","I am smart!"); //Article to be added
+        List<Article> setList = generateMockList();
+        setList.add(someArticleToAdd);
+        return setList;
+    }
+    private List<Article> articles = listToSet();
     //endregion
 }

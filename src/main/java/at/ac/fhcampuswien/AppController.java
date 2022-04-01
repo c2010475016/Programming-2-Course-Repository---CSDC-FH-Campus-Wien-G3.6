@@ -25,7 +25,7 @@ public class AppController {
     }
 
     public List<Article> getTopHeadlinesAustria(){
-        return articles;
+        return generateMockList();
     }
 
     public List<Article> getAllNewsBitcoin() {
