@@ -21,6 +21,9 @@ public class AppController {
     }
 
     public int getArticleCount() {
+        if (articles == null) {
+            return 0;
+        }
         return articles.size();
     }
 
