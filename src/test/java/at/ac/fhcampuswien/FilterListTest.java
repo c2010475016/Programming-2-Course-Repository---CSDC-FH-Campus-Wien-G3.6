@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*; //Alle Methoden der Klasse wer
 public class FilterListTest {
 
     @Test
-    @DisplayName("Filter List Filtering After Non Existing Articles")
+    @DisplayName("Filter List: Filtering After Non Existing Articles")
     public void testFilterListFilteringAfterNonExistingArticles() {
         AppController appCon = new AppController();
         List<Article> testFilterList = new ArrayList<>();
@@ -21,7 +21,7 @@ public class FilterListTest {
     }
 
     @Test
-    @DisplayName("Filter List Filtering Test For Existing Articles")
+    @DisplayName("Filter List: Filtering Test For Existing Articles")
     public void testFilterListFilteringTestForExistingArticles() {
         AppController appCon = new AppController();
         List<Article> testFilterList = new ArrayList<>();
@@ -31,7 +31,7 @@ public class FilterListTest {
     }
 
     @Test
-    @DisplayName("Filter List Filtering Test Empty Query Parameter")
+    @DisplayName("Filter List: Filtering Test Empty Query Parameter")
     public void testFilterListFilteringTestEmptyQueryParameter() {
         AppController appCon = new AppController();
         List<Article> testFilterList = new ArrayList<>();
@@ -41,7 +41,7 @@ public class FilterListTest {
     }
 
     @Test
-    @DisplayName("Filter List Filtering Test Null Query Parameter")
+    @DisplayName("Filter List: Filtering Test Null Query Parameter")
     public void testFilterListFilteringTestNullQueryParameter() {
         AppController appCon = new AppController();
         List<Article> testFilterList = new ArrayList<>();
@@ -51,7 +51,7 @@ public class FilterListTest {
     }
 
     @Test
-    @DisplayName("Filter List Filtering Test Null List Parameter")
+    @DisplayName("Filter List: Filtering Test Null List Parameter")
     public void testFilterListFilteringTestNullListParameter() {
         AppController appCon = new AppController();
         List<Article> testFilterList = new ArrayList<>();
@@ -61,7 +61,7 @@ public class FilterListTest {
     }
 
     @Test
-    @DisplayName("Filter List Filtering Test With Null Element")
+    @DisplayName("Filter List: Filtering Test With Null Element")
     public void testFilterListTestListWithNullElement() {
         AppController appCon = new AppController();
         List<Article> testFilterList = new ArrayList<>();

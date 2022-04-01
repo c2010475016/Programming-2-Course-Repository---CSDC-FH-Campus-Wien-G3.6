@@ -20,6 +20,8 @@ public class SetArticlesTest {
         assertEquals(appCon.getArticles().toString(), listToSet().toString()); //set articles, articles to be set
     }
 
+
+//-----------------------------------------------------------------------------------------------------------------//
     //region helper
     private List<Article> generateMockList(){
         List<Article> dummyList = new ArrayList<>();
@@ -31,7 +33,7 @@ public class SetArticlesTest {
         return dummyList;
     }
 
-    private List<Article> listToSet(){
+    private List<Article> listToSet(){   //dummy list extended, list to be used in setter
         Article someArticleToAdd = new Article("Me","I am smart!"); //Article to be added
         List<Article> setList = generateMockList();
         setList.add(someArticleToAdd);

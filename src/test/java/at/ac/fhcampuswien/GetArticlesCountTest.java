@@ -19,11 +19,6 @@ public class GetArticlesCountTest {
     }
 
 
-
-
-
-
-
     //region helper
     private List<Article> generateMockList(){
         List<Article> dummyList = new ArrayList<>();
