@@ -11,44 +11,18 @@ import static org.junit.jupiter.api.Assertions.*; //Alle Methoden der Klasse wer
 public class GetArticlesCountTest {
 
     @Test
-    @DisplayName("getArticlesCount1")
-    public void testGetArticlesCount1() {
-//        AppController appCon = new AppController();
-//        List<Article> testFilterList = new ArrayList<>();
-//        testFilterList = appCon.filterList("Dog", generateMockList());
-//        assertNotNull(testFilterList); //Für Nullpointerexception
-//        assertEquals(0,testFilterList.size()); //0, weil es 0 "Dog" Artikel gibt
+    @DisplayName("Counting Articles After generateMockList")
+    public void testArticlesCountWithArticles() {
+        AppController appCon = new AppController();
+        appCon.setArticles(listToSet());
+        assertEquals(generateMockList().size()+1, appCon.getArticleCount());
     }
 
-    @Test
-    @DisplayName("getArticlesCount2")
-    public void testGetArticlesCount2() {
-//        AppController appCon = new AppController();
-//        List<Article> testFilterList = new ArrayList<>();
-//        testFilterList = appCon.filterList("Dog", generateMockList());
-//        assertNotNull(testFilterList); //Für Nullpointerexception
-//        assertEquals(0,testFilterList.size()); //0, weil es 0 "Dog" Artikel gibt
-    }
 
-    @Test
-    @DisplayName("getArticlesCount3")
-    public void testGetArticlesCount3() {
-//        AppController appCon = new AppController();
-//        List<Article> testFilterList = new ArrayList<>();
-//        testFilterList = appCon.filterList("Dog", generateMockList());
-//        assertNotNull(testFilterList); //Für Nullpointerexception
-//        assertEquals(0,testFilterList.size()); //0, weil es 0 "Dog" Artikel gibt
-    }
 
-    @Test
-    @DisplayName("getArticlesCount4")
-    public void testGetArticlesCount4() {
-//        AppController appCon = new AppController();
-//        List<Article> testFilterList = new ArrayList<>();
-//        testFilterList = appCon.filterList("Dog", generateMockList());
-//        assertNotNull(testFilterList); //Für Nullpointerexception
-//        assertEquals(0,testFilterList.size()); //0, weil es 0 "Dog" Artikel gibt
-    }
+
+
+
 
     //region helper
     private List<Article> generateMockList(){
@@ -59,6 +33,13 @@ public class GetArticlesCountTest {
             dummyList.add(article);
         }
         return dummyList;
+    }
+
+    private List<Article> listToSet(){
+        Article someArticleToAdd = new Article("Me","I am smart!"); //Article to be added
+        List<Article> setList = generateMockList();
+        setList.add(someArticleToAdd);
+        return setList;
     }
     //endregion
 }
