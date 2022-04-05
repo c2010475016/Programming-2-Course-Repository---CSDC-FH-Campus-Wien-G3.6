@@ -13,7 +13,7 @@ public class AppController {
     }
 
     public void setArticles(List<Article> articles) {
-        this.articles = articles;
+        this.articles = new ArrayList<>(articles);
     }
 
     public List<Article> getArticles() {
@@ -28,6 +28,8 @@ public class AppController {
     }
 
     public List<Article> getTopHeadlinesAustria(){
+        Article someArticleToAdd = new Article("Me","I am smart!"); //Article to be added
+        articles.add(someArticleToAdd);
         if (articles == null) { // für Nullpointer Exception
             return Collections.emptyList(); // return empty list oder new Arraylist
         }
