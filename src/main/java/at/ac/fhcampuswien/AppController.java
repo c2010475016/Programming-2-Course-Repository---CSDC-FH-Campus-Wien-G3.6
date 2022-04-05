@@ -29,6 +29,7 @@ public class AppController {
 
     public List<Article> getTopHeadlinesAustria(){
         Article someArticleToAdd = new Article("Me","I am smart!"); //Article to be added
+        setArticles(generateMockList());
         articles.add(someArticleToAdd);
         if (articles == null) { // für Nullpointer Exception
             return Collections.emptyList(); // return empty list oder new Arraylist

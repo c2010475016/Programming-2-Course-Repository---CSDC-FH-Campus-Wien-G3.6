@@ -21,7 +21,6 @@ public class SetArticlesTest {
     }
 
 
-//-----------------------------------------------------------------------------------------------------------------//
     //region helper
     private List<Article> generateMockList(){
         List<Article> dummyList = new ArrayList<>();

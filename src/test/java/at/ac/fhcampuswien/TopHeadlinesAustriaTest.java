@@ -29,13 +29,12 @@ public class TopHeadlinesAustriaTest {
         List<Article> testHeadlinesAustriaList;
 
         testHeadlinesAustriaList = appCon.getTopHeadlinesAustria();
-//        assertNotNull(testHeadlinesAustriaList);
+
         assertEquals(0,testHeadlinesAustriaList.size());
     }
 
 
 
-// -----------------------------------------------------------------------------------------------------------------//
     //region helper
     private List<Article> generateMockList() {
         List<Article> dummyList = new ArrayList<>();
