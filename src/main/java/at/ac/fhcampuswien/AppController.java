@@ -1,15 +1,20 @@
 package at.ac.fhcampuswien;
 
+import at.ac.fhcampuswien.Article;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class AppController {
 
     private List<Article> articles;
 
     public AppController() {
-
+        //articles = generateMockList(); statische Liste aus Übung 1?
+        articles = new ArrayList<>();
     }
 
     public void setArticles(List<Article> articles) {
@@ -27,15 +32,32 @@ public class AppController {
         return articles.size();
     }
 
-    public List<Article> getTopHeadlinesAustria(){
-        if (articles == null) { // für Nullpointer Exception
-            return Collections.emptyList(); // return empty list oder new Arraylist
+    public List<Article> getTopHeadlinesAustria() {
+        NewsApi newsapi = new NewsApi();
+        NewsResponse response = newsapi.getNews(Endpoint.TOP_HEADLINES,"bitcoin",Country.at);
+
+        if (response == null || !Objects.equals(response.getStatus(), Status.ok.name())) {
+            return Collections.emptyList();
         }
-        return articles;
+        return response.getArticles();
+        //old code
+        //if (articles == null) { // für Nullpointer Exception
+        //   return Collections.emptyList(); // return empty list oder new Arraylist
+        //}
+        //return articles;
     }
 
     public List<Article> getAllNewsBitcoin() {
-        return filterList("bitcoin",articles); //die articles gefiltert
+        NewsApi newsapi = new NewsApi();
+        NewsResponse response = newsapi.getNews(Endpoint.EVERYTHING,"bitcoin",Country.at);
+
+        if (response == null || !Objects.equals(response.getStatus(), Status.ok.name())) {
+            return Collections.emptyList();
+        }
+
+        return response.getArticles();
+        //old code
+        //return filterList("bitcoin",articles); //die articles gefiltert
     }
 
     protected List<Article> filterList(String query, List<Article> articles){
