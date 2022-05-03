@@ -9,25 +9,43 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class NewsApi {
-    private static String GET_ALL_NEWS = "https://newsapi.org/v2/everything?";
-    private static String GET_TOP_HEADLINES = "https://newsapi.org/v2/top-headlines?";
-    private static String API_KEY = "379bbec59c044cb7a85c990dbcf00dc4";
+    private static final String GET_ALL_NEWS = "https://newsapi.org/v2/everything?";
+    private static final String GET_TOP_HEADLINES = "https://newsapi.org/v2/top-headlines?";
+    private static final String API_KEY = "379bbec59c044cb7a85c990dbcf00dc4";
 
     public NewsResponse getNews(Endpoint endpoint, String query, Country country) { //generic solution instead of multiple scope-based methods
 
         String url = "";
 
         switch (endpoint) {
-            case EVERYTHING:{
+            case EVERYTHING -> {
                 url = GET_ALL_NEWS + "apiKey=" + API_KEY + "&q=" + query;
-                break;
             }
-            case TOP_HEADLINES:{
-                url = GET_TOP_HEADLINES + "apiKey=" + API_KEY + "&country=" + country;
-                break;
+            case TOP_HEADLINES -> {
+                url = GET_TOP_HEADLINES + "apiKey=" + API_KEY + "&q=" + query + "&country=" + country;
             }
-            default:{
-                break;
+            default -> {
+            }
+        }
+
+        if (url.isEmpty()) {
+            return new NewsResponse();
+        }
+        return run(url);
+
+
+    }public NewsResponse getNews(Endpoint endpoint, String query) { //generic solution instead of multiple scope-based methods
+
+        String url = "";
+
+        switch (endpoint) {
+            case EVERYTHING -> {
+                url = GET_ALL_NEWS + "apiKey=" + API_KEY + "&q=" + query;
+            }
+            case TOP_HEADLINES -> {
+                url = GET_TOP_HEADLINES + "apiKey=" + API_KEY + "&q=" + query;
+            }
+            default -> {
             }
         }
 

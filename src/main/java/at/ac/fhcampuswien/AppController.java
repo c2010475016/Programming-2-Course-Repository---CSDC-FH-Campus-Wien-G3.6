@@ -34,7 +34,7 @@ public class AppController {
 
     public List<Article> getTopHeadlinesAustria() {
         NewsApi newsapi = new NewsApi();
-        NewsResponse response = newsapi.getNews(Endpoint.TOP_HEADLINES, "bitcoin", Country.at);
+        NewsResponse response = newsapi.getNews(Endpoint.TOP_HEADLINES, "corona", Country.at);
 
         if (response == null || !Objects.equals(response.getStatus(), Status.ok.name())) {
             return Collections.emptyList();
@@ -49,7 +49,7 @@ public class AppController {
 
     public List<Article> getAllNewsBitcoin() {
         NewsApi newsapi = new NewsApi();
-        NewsResponse response = newsapi.getNews(Endpoint.EVERYTHING, "bitcoin", Country.at);
+        NewsResponse response = newsapi.getNews(Endpoint.EVERYTHING, "bitcoin");
 
         if (response == null || !Objects.equals(response.getStatus(), Status.ok.name())) {
             return Collections.emptyList();

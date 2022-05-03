@@ -3,7 +3,7 @@ package at.ac.fhcampuswien;
 import java.util.Scanner;
 
 public class Menu {
-    private AppController controller;
+    private final AppController controller = new AppController();
     private static final String INVALID_INPUT_MESSAGE = "Invalid input!";
     private static final String EXIT_MESSAGE = "Bye";
 
@@ -20,27 +20,30 @@ public class Menu {
             case "b" -> getAllNewsBitcoin(controller);
             case "y" -> getArticleCount(controller);
             case "q" -> printExitMessage();
-            default -> System.out.println(INVALID_INPUT_MESSAGE);
+            default -> printInvalidInputMessage();
         }
     }
 
     private void getArticleCount(AppController ctrl) {
-
+        System.out.println(ctrl.getArticleCount());
     }
 
     private void getTopHeadlinesAustria(AppController ctrl) {
+        System.out.println(ctrl.getTopHeadlinesAustria());
 
     }
 
     private void getAllNewsBitcoin(AppController ctrl) {
+        System.out.println(ctrl.getAllNewsBitcoin());
 
     }
 
     private static void printExitMessage() {
-
+        System.out.println(EXIT_MESSAGE);
     }
 
     private static void printInvalidInputMessage() {
+        System.out.println(INVALID_INPUT_MESSAGE);
 
     }
 
