@@ -24,7 +24,19 @@ public class Article {
         return title;
     }
 
+    public String getSourceId() {
+        return sourceId;
+    }
+
+    public String getSourceName() {
+        return sourceName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
     public String toString() {
-        return "Author: " + this.author + " Title: " + this.title;
+        return "Author: " + this.author + " Title: " + this.title + "Source" + this.sourceName  + "\n";
     }
 }
