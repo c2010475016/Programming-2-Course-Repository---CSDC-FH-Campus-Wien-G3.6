@@ -2,11 +2,11 @@ package at.ac.fhcampuswien;
 
 public class Article {
 
-    private String author = "";
-    private String title = "";
-    private String sourceId = "";
-    private String sourceName = "";
-    private String description = "";
+    private String author;
+    private String title;
+    private String sourceId;
+    private String sourceName;
+    private String description;
 
     public Article(String author, String title, String sourceId, String sourceName, String description) {
         this.author = author;
