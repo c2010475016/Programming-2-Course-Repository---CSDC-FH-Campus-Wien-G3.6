@@ -18,7 +18,7 @@ public class GetAllNewsBitcoinTest {
         AppController appCon = new AppController();
         List<Article> testFilterList = new ArrayList<>();
         List<Article> inputParameter = generateMockList(); //new list for null element
-        Article bitcoinArticle = new Article("Satoshi Nakamoto", "bitcoin");
+        Article bitcoinArticle = new Article("Satoshi Nakamoto", "bitcoin", "dummyId", "dummyName", "descr.");
         inputParameter.add(bitcoinArticle);
         appCon.setArticles(inputParameter); //articles list setzen, sonst null
 
@@ -32,7 +32,7 @@ public class GetAllNewsBitcoinTest {
         List<Article> dummyList = new ArrayList<>();
 
         for (int i = 0; i <= 5; i++) { //dummyList wird mit verschiedenen Werten befüllt
-            Article article = new Article("author" + i, "title" + i);
+            Article article = new Article("author" + i, "title" + i, "dummyId" + i, "dummyName" + i, "descr." + i);
             dummyList.add(article);
         }
         return dummyList;

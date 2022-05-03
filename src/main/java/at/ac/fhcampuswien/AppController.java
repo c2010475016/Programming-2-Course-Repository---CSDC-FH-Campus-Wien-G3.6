@@ -34,7 +34,7 @@ public class AppController {
 
     public List<Article> getTopHeadlinesAustria() {
         NewsApi newsapi = new NewsApi();
-        NewsResponse response = newsapi.getNews(Endpoint.TOP_HEADLINES,"bitcoin",Country.at);
+        NewsResponse response = newsapi.getNews(Endpoint.TOP_HEADLINES, "bitcoin", Country.at);
 
         if (response == null || !Objects.equals(response.getStatus(), Status.ok.name())) {
             return Collections.emptyList();
@@ -49,7 +49,7 @@ public class AppController {
 
     public List<Article> getAllNewsBitcoin() {
         NewsApi newsapi = new NewsApi();
-        NewsResponse response = newsapi.getNews(Endpoint.EVERYTHING,"bitcoin",Country.at);
+        NewsResponse response = newsapi.getNews(Endpoint.EVERYTHING, "bitcoin", Country.at);
 
         if (response == null || !Objects.equals(response.getStatus(), Status.ok.name())) {
             return Collections.emptyList();
@@ -60,7 +60,7 @@ public class AppController {
         //return filterList("bitcoin",articles); //die articles gefiltert
     }
 
-    protected List<Article> filterList(String query, List<Article> articles){
+    protected List<Article> filterList(String query, List<Article> articles) {
         List<Article> tempFilterList = new ArrayList<>(); //temporäre Zwischenliste für die neuen Artikel mit Query speichern
 
         if (articles == null) { // für Nullpointer Exception
@@ -78,11 +78,11 @@ public class AppController {
         return tempFilterList; //neue Liste zurückgeben
     }
 
-    private static List<Article> generateMockList(){
+    private static List<Article> generateMockList() {
         List<Article> dummyList = new ArrayList<>();
 
         for (int i = 0; i <= 5; i++) { //dummyList wird mit verschiedenen Werten befüllt
-            Article article = new Article("author" + i, "title" + i);
+            Article article = new Article("author" + i, "title" + i, "dummyId" + i, "dummyName" + i, "descr." + i);
             dummyList.add(article);
         }
         return dummyList;

@@ -27,14 +27,14 @@ public class SetArticlesTest {
         List<Article> dummyList = new ArrayList<>();
 
         for (int i = 0; i <= 1; i++) { //dummyList filled with dummy articles
-            Article article = new Article("author" + i, "title" + i);
+            Article article = new Article("author" + i, "title" + i, "dummyId" + i, "dummyName" + i, "descr." + i);
             dummyList.add(article);
         }
         return dummyList;
     }
 
     private List<Article> listToSet(){   //dummy list extended, list to be used in setter
-        Article someArticleToAdd = new Article("Me","I am smart!"); //Article to be added
+        Article someArticleToAdd = new Article("Me","I am smart!", "dummyId", "dummyName", "descr."); //Article to be added
         List<Article> setList = generateMockList();
         setList.add(someArticleToAdd);
         return setList;

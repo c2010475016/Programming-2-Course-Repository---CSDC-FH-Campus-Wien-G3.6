@@ -31,14 +31,14 @@ public class GetArticlesCountTest {
         List<Article> dummyList = new ArrayList<>();
 
         for (int i = 0; i <= 5; i++) { //dummyList wird mit verschiedenen Werten befüllt
-            Article article = new Article("author" + i, "title" + i);
+            Article article = new Article("author" + i, "title" + i, "dummyId" + i, "dummyName" + i, "descr." + i);
             dummyList.add(article);
         }
         return dummyList;
     }
 
     private List<Article> listToSet(){
-        Article someArticleToAdd = new Article("Me","I am smart!"); //Article to be added
+        Article someArticleToAdd = new Article("Me","I am smart!", "dummyId", "dummyName", "descr."); //Article to be added
         List<Article> setList = generateMockList();
         setList.add(someArticleToAdd);
         return setList;
