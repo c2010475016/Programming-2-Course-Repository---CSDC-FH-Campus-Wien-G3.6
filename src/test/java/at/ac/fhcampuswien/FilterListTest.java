@@ -1,6 +1,7 @@
 package at.ac.fhcampuswien;
 
 import at.ac.fhcampuswien.models.Article;
+import at.ac.fhcampuswien.models.Source;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -77,9 +78,10 @@ public class FilterListTest {
     //region helper
     private List<Article> generateMockList(){
         List<Article> dummyList = new ArrayList<>();
+        Source source = new Source();
 
         for (int i = 0; i <= 5; i++) { //dummyList wird mit verschiedenen Werten befüllt
-            Article article = new Article("author" + i, "title" + i, "dummyId" + i, "dummyName" + i, "descr." + i);
+            Article article = new Article("author" + i, "title" + i, source, "descr." + i);
             dummyList.add(article);
         }
         return dummyList;

@@ -1,6 +1,7 @@
 package at.ac.fhcampuswien;
 
 import at.ac.fhcampuswien.models.Article;
+import at.ac.fhcampuswien.models.Source;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -26,16 +27,17 @@ public class SetArticlesTest {
     //region helper
     private List<Article> generateMockList(){
         List<Article> dummyList = new ArrayList<>();
-
+        Source source = new Source();
         for (int i = 0; i <= 1; i++) { //dummyList filled with dummy articles
-            Article article = new Article("author" + i, "title" + i, "dummyId" + i, "dummyName" + i, "descr." + i);
+            Article article = new Article("author" + i, "title" + i, source, "descr." + i);
             dummyList.add(article);
         }
         return dummyList;
     }
 
     private List<Article> listToSet(){   //dummy list extended, list to be used in setter
-        Article someArticleToAdd = new Article("Me","I am smart!", "dummyId", "dummyName", "descr."); //Article to be added
+        Source source = new Source();
+        Article someArticleToAdd = new Article("Me","I am smart!", source, "descr."); //Article to be added
         List<Article> setList = generateMockList();
         setList.add(someArticleToAdd);
         return setList;
