@@ -31,11 +31,12 @@ public class Menu {
     }
 
     private void getTopHeadlinesAustria(AppController ctrl) {
-        ctrl.getTopHeadlinesAustria();
+        System.out.println(ctrl.getTopHeadlinesAustria());
+
     }
 
     private void getAllNewsBitcoin(AppController ctrl) {
-        ctrl.getAllNewsBitcoin();
+        System.out.println(ctrl.getAllNewsBitcoin());
     }
 
     private static void printExitMessage() {
