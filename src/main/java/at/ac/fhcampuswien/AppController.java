@@ -1,8 +1,12 @@
 package at.ac.fhcampuswien;
 
-import at.ac.fhcampuswien.Article;
+import at.ac.fhcampuswien.Enums.Country;
+import at.ac.fhcampuswien.Enums.Endpoint;
+import at.ac.fhcampuswien.Enums.Status;
+import at.ac.fhcampuswien.api.NewsApi;
+import at.ac.fhcampuswien.models.Article;
+import at.ac.fhcampuswien.models.NewsResponse;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -34,7 +38,7 @@ public class AppController {
 
     public List<Article> getTopHeadlinesAustria() {
         NewsApi newsapi = new NewsApi();
-        NewsResponse response = newsapi.getNews(Endpoint.TOP_HEADLINES, "bitcoin", Country.at);
+        NewsResponse response = newsapi.getNews(Endpoint.TOP_HEADLINES, "corona", Country.at);
 
         if (response == null || !Objects.equals(response.getStatus(), Status.ok.name())) {
             return Collections.emptyList();
@@ -78,13 +82,13 @@ public class AppController {
         return tempFilterList; //neue Liste zurückgeben
     }
 
-    private static List<Article> generateMockList() {
-        List<Article> dummyList = new ArrayList<>();
-
-        for (int i = 0; i <= 5; i++) { //dummyList wird mit verschiedenen Werten befüllt
-            Article article = new Article("author" + i, "title" + i, "dummyId" + i, "dummyName" + i, "descr." + i);
-            dummyList.add(article);
-        }
-        return dummyList;
-    }
+//    private static List<Article> generateMockList() {
+//        List<Article> dummyList = new ArrayList<>();
+//
+//        for (int i = 0; i <= 5; i++) { //dummyList wird mit verschiedenen Werten befüllt
+//            Article article = new Article("author" + i, "title" + i, "dummyId" + i, "dummyName" + i, "descr." + i);
+//            dummyList.add(article);
+//        }
+//        return dummyList;
+//    }
 }

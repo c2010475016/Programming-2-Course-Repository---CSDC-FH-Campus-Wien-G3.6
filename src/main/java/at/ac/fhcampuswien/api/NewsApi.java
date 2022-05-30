@@ -1,5 +1,8 @@
-package at.ac.fhcampuswien;
+package at.ac.fhcampuswien.api;
 
+import at.ac.fhcampuswien.Enums.Country;
+import at.ac.fhcampuswien.Enums.Endpoint;
+import at.ac.fhcampuswien.models.NewsResponse;
 import com.google.gson.Gson;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

@@ -1,5 +1,6 @@
 package at.ac.fhcampuswien;
 
+import at.ac.fhcampuswien.models.Article;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

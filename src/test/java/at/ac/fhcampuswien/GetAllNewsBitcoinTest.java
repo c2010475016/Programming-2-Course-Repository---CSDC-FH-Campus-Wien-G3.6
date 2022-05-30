@@ -1,14 +1,12 @@
 package at.ac.fhcampuswien;
 
 
+import at.ac.fhcampuswien.models.Article;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*; //Alle Methoden der Klasse werden importiert
 
 public class GetAllNewsBitcoinTest {
 

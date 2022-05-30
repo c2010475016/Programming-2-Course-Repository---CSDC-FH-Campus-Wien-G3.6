@@ -1,18 +1,16 @@
-package at.ac.fhcampuswien;
+package at.ac.fhcampuswien.models;
 
 public class Article {
 
     private String author;
     private String title;
-    private String sourceId;
-    private String sourceName;
+    private Source source;
     private String description;
 
-    public Article(String author, String title, String sourceId, String sourceName, String description) {
+    public Article(String author, String title, Source source, String description) {
         this.author = author;
         this.title = title;
-        this.sourceId = sourceId;
-        this.sourceName = sourceName;
+        this.source = source;
         this.description = description;
     }
 
@@ -24,7 +22,12 @@ public class Article {
         return title;
     }
 
+    public Source getSource() {
+        return source;
+    }
+
+    @Override
     public String toString() {
-        return "Author: " + this.author + " Title: " + this.title;
+        return "Author: " + getAuthor()+ " Title: " + getTitle();
     }
 }

@@ -1,4 +1,4 @@
-package at.ac.fhcampuswien;
+package at.ac.fhcampuswien.Enums;
 
 public enum Language {
     ar,
