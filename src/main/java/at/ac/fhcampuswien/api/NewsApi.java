@@ -16,7 +16,7 @@ public class NewsApi {
     private static final String GET_TOP_HEADLINES = "https://newsapi.org/v2/top-headlines?";
     private static final String API_KEY = "379bbec59c044cb7a85c990dbcf00dc4";
 
-    public NewsResponse getNews(Endpoint endpoint, String query, Country country) { //generic solution instead of multiple scope-based methods
+    public NewsResponse getNews(Endpoint endpoint, String query, Country country) throws NewsApiException { //generic solution instead of multiple scope-based methods
 
         String url = "";
 
@@ -24,7 +24,7 @@ public class NewsApi {
             case EVERYTHING -> url = GET_ALL_NEWS + "apiKey=" + API_KEY + "&q=" + query;
 
             case TOP_HEADLINES -> url = GET_TOP_HEADLINES + "apiKey=" + API_KEY + "&country=" + country;
-            default -> {
+            default -> {throw new NewsApiException("no Response");
             }
         }
 

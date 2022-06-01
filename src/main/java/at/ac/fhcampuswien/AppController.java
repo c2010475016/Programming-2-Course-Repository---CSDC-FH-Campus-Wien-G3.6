@@ -4,6 +4,7 @@ import at.ac.fhcampuswien.Enums.Country;
 import at.ac.fhcampuswien.Enums.Endpoint;
 import at.ac.fhcampuswien.Enums.Status;
 import at.ac.fhcampuswien.api.NewsApi;
+import at.ac.fhcampuswien.api.NewsApiException;
 import at.ac.fhcampuswien.models.Article;
 import at.ac.fhcampuswien.models.NewsResponse;
 
@@ -38,7 +39,12 @@ public class AppController {
 
     public List<Article> getTopHeadlinesAustria() {
         NewsApi newsapi = new NewsApi();
-        NewsResponse response = newsapi.getNews(Endpoint.TOP_HEADLINES, "corona", Country.at);
+        NewsResponse response = null;
+        try {
+            response = newsapi.getNews(Endpoint.TOP_HEADLINES, "corona", Country.at);
+        } catch (NewsApiException e) {
+            e.printStackTrace();
+        }
 
         if (response == null || !Objects.equals(response.getStatus(), Status.ok.name())) {
             return Collections.emptyList();
@@ -53,7 +59,12 @@ public class AppController {
 
     public List<Article> getAllNewsBitcoin() {
         NewsApi newsapi = new NewsApi();
-        NewsResponse response = newsapi.getNews(Endpoint.EVERYTHING, "bitcoin", Country.at);
+        NewsResponse response = null;
+        try {
+            response = newsapi.getNews(Endpoint.EVERYTHING, "bitcoin", Country.at);
+        } catch (NewsApiException e) {
+            e.printStackTrace();
+        }
 
         if (response == null || !Objects.equals(response.getStatus(), Status.ok.name())) {
             return Collections.emptyList();
