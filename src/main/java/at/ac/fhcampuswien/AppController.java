@@ -61,7 +61,7 @@ public class AppController {
         NewsApi newsapi = new NewsApi();
         NewsResponse response = null;
         try {
-            response = newsapi.getNews(Endpoint.EVERYTHING, "bitcoin", Country.at);
+            response = newsapi.getNews(Endpoint.SOURCES, "bitcoin", Country.at);
         } catch (NewsApiException e) {
             e.printStackTrace();
         }

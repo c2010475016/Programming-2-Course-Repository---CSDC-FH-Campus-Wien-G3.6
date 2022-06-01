@@ -24,7 +24,7 @@ public class NewsApi {
             case EVERYTHING -> url = GET_ALL_NEWS + "apiKey=" + API_KEY + "&q=" + query;
 
             case TOP_HEADLINES -> url = GET_TOP_HEADLINES + "apiKey=" + API_KEY + "&country=" + country;
-            default -> {throw new NewsApiException("no Response");
+            default -> {throw new NewsApiException("Custom Exception: wrong endpoint");
             }
         }
 
