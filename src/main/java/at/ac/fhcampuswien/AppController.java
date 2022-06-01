@@ -31,10 +31,23 @@ public class AppController {
     }
 
     public int getArticleCount() {
-        if (articles == null) {
+//        if (articles == null) {
+//            return 0;
+//        }
+//        return articles.size();
+
+        NewsApi newsapi = new NewsApi();
+        NewsResponse response = null;
+        try {
+            response = newsapi.getNews(Endpoint.EVERYTHING, "*");
+        } catch (NewsApiException e) {
+            e.printStackTrace();
+        }
+
+        if (response == null || !Objects.equals(response.getStatus(), Status.ok.name())) {
             return 0;
         }
-        return articles.size();
+        return response.getArticles().size();
     }
 
     public List<Article> getTopHeadlinesAustria() {
@@ -61,7 +74,7 @@ public class AppController {
         NewsApi newsapi = new NewsApi();
         NewsResponse response = null;
         try {
-            response = newsapi.getNews(Endpoint.SOURCES, "bitcoin", Country.at);
+            response = newsapi.getNews(Endpoint.EVERYTHING, "bitcoin");
         } catch (NewsApiException e) {
             e.printStackTrace();
         }

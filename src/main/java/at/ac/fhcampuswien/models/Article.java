@@ -1,5 +1,7 @@
 package at.ac.fhcampuswien.models;
 
+import org.apache.maven.plugin.surefire.log.api.NullConsoleLogger;
+
 public class Article {
 
     private String author;
@@ -28,6 +30,9 @@ public class Article {
 
     @Override
     public String toString() {
-        return "Author: " + getAuthor()+ " Title: " + getTitle();
+        if(getAuthor() != null){
+            return "Author: " + getAuthor()+ " - Title: " + getTitle() + "\n";
+        } else
+        return "Title: " + getTitle() + "\n";
     }
 }

@@ -3,7 +3,8 @@ package at.ac.fhcampuswien.Enums;
 public enum Endpoint {
     EVERYTHING("everything"),
     TOP_HEADLINES("top-headlines"),
-    SOURCES("sources");
+    SOURCES("sources"),
+    TEST("test");
 
     private String value;
 
