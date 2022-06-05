@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class AppController {
 
@@ -31,15 +32,10 @@ public class AppController {
     }
 
     public int getArticleCount() {
-//        if (articles == null) {
-//            return 0;
-//        }
-//        return articles.size();
-
         NewsApi newsapi = new NewsApi();
         NewsResponse response = null;
         try {
-            response = newsapi.getNews(Endpoint.EVERYTHING, "*");
+            response = newsapi.getNews(Endpoint.EVERYTHING, "*", null);
         } catch (NewsApiException e) {
             e.printStackTrace();
         }
@@ -60,32 +56,28 @@ public class AppController {
         }
 
         if (response == null || !Objects.equals(response.getStatus(), Status.ok.name())) {
-            return Collections.emptyList();
+            setArticles(Collections.emptyList());
+        } else {
+            setArticles(sortArticles(response.getArticles()));
         }
-        return response.getArticles();
-        //old code
-        //if (articles == null) { // für Nullpointer Exception
-        //   return Collections.emptyList(); // return empty list oder new Arraylist
-        //}
-        //return articles;
+        return getArticles();
     }
 
     public List<Article> getAllNewsBitcoin() {
         NewsApi newsapi = new NewsApi();
         NewsResponse response = null;
         try {
-            response = newsapi.getNews(Endpoint.EVERYTHING, "bitcoin");
+            response = newsapi.getNews(Endpoint.EVERYTHING, "bitcoin",null);
         } catch (NewsApiException e) {
             e.printStackTrace();
         }
 
         if (response == null || !Objects.equals(response.getStatus(), Status.ok.name())) {
-            return Collections.emptyList();
+            setArticles(Collections.emptyList());
+        } else {
+            setArticles(sortArticles(response.getArticles()));
         }
-
-        return response.getArticles();
-        //old code
-        //return filterList("bitcoin",articles); //die articles gefiltert
+        return getArticles();
     }
 
     protected List<Article> filterList(String query, List<Article> articles) {
@@ -105,6 +97,38 @@ public class AppController {
         });
         return tempFilterList; //neue Liste zurückgeben
     }
+
+    private List<Article> sortArticles(List<Article> list) {
+        return list.stream().sorted((a1,a2) -> {
+            int a1DescriptionSize = a1.getDescription().length();
+            int a2DescriptionSize = a2.getDescription().length();
+
+            if (a1DescriptionSize > a2DescriptionSize || a1DescriptionSize < a2DescriptionSize) {
+                return Integer.compare(a1.getDescription().length(),a2.getDescription().length());
+            } else {
+                return a1.getDescription().compareTo(a2.getDescription());
+            }
+        }).collect(Collectors.toList());
+    }
+
+
+    //region Search
+    public String providerWithMostArticles() {
+        getArticles().stream().collect(Collectors.groupingBy(article -> article.getSource()));
+        System.out.print("" +
+                "" +
+                "hallo");
+        return "";
+    }
+
+    public long getCountOfNewYorkTimes() {
+       return getArticles().stream().filter(article -> article.getSource().getName().equals("New York Times")).count();
+    }
+
+    public long getCountHeadlineUnder15Chars() {
+        return getArticles().stream().filter(article -> article.getTitle().length() < 15).count();
+    }
+    //endregion
 
 //    private static List<Article> generateMockList() {
 //        List<Article> dummyList = new ArrayList<>();

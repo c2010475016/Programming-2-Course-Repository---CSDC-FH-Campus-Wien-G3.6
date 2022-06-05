@@ -28,6 +28,10 @@ public class Article {
         return source;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     @Override
     public String toString() {
         if(getAuthor() != null){

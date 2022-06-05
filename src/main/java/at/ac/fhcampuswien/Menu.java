@@ -1,29 +1,70 @@
 package at.ac.fhcampuswien;
 
+import at.ac.fhcampuswien.Enums.MenuLevel;
+
 import java.util.Scanner;
 
 public class Menu {
     private AppController controller;
     private static final String INVALID_INPUT_MESSAGE = "Invalid input!";
     private static final String EXIT_MESSAGE = "Bye bye!";
+    boolean isActive;
+    MenuLevel menulevel = MenuLevel.Top;
 
     public void start() {
         controller = new AppController();
-        printMenu();
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.next();
-        handleInput(input);
+        isActive = true;
+        while (isActive) {
+            printMenuLevel();
+            Scanner scanner = new Scanner(System.in);
+            String input = scanner.next();
+            handleInput(input);
+        }
+    }
+    private void handleInput(String input) {
+        switch (menulevel) {
+            case Top -> {
+                handleInputTopLevel(input);
+            }
+            case Search -> {
+                handleInputSearchLevel(input);
+
+            }
+        }
     }
 
-    private void handleInput(String input) {
+    private void handleInputTopLevel(String input) {
         switch (input) {
-            case "a" -> getTopHeadlinesAustria(controller);
-            case "b" -> getAllNewsBitcoin(controller);
+            case "a" -> {
+                getTopHeadlinesAustria(controller);
+                this.menulevel = MenuLevel.Search;
+            }
+            case "b" -> {
+                getAllNewsBitcoin(controller);
+                this.menulevel = MenuLevel.Search;
+            }
             case "y" -> getArticleCount(controller);
-            case "q" -> printExitMessage();
+            case "q" -> handleExit();
             default -> printInvalidInputMessage();
         }
     }
+    private void handleInputSearchLevel(String input) {
+        switch (input) {
+            case "a" -> {
+                controller.providerWithMostArticles();
+                this.menulevel = MenuLevel.Search;
+            }
+            case "b" -> {
+                getAllNewsBitcoin(controller);
+                this.menulevel = MenuLevel.Search;
+            }
+            case "c" -> printCountNewYorkTimes(controller);
+            case "d" -> printHeadlineUnder15Chars(controller);
+            case "q" -> this.menulevel = MenuLevel.Top;
+            default -> printInvalidInputMessage();
+        }
+    }
+
 
     private void getArticleCount(AppController ctrl) {
 
@@ -39,8 +80,21 @@ public class Menu {
         System.out.println(ctrl.getAllNewsBitcoin());
     }
 
+    private void printCountNewYorkTimes(AppController ctrl) {
+        System.out.println(ctrl.getCountOfNewYorkTimes());
+    }
+    private void printHeadlineUnder15Chars(AppController ctrl) {
+        System.out.println(ctrl.getCountHeadlineUnder15Chars());
+    }
+
     private static void printExitMessage() {
         System.out.println(EXIT_MESSAGE);
+
+    }
+
+    private void handleExit() {
+        printExitMessage();
+        isActive = false;
     }
 
     private static void printInvalidInputMessage() {
@@ -62,4 +116,36 @@ public class Menu {
                 q: Quit
                 """);
     }
+
+    private static void printSearch() {
+        System.out.print("""
+                **************************
+                *   Analysis of Results  *
+                **************************
+
+
+                Enter what you want to do:
+                                
+                a: Which provider returns most articles?
+                b: Which author has the longest name?
+                c: How many articles are from "New York Times"?
+                d: Which articles have less than 15 characters in the Headline?
+                q: Return to the Top Menu
+                """);
+    }
+
+    private void printMenuLevel() {
+        switch (menulevel) {
+            case Top -> {
+                printMenu();
+            }
+            case Search -> {
+                printSearch();
+
+            }
+        }
+    }
 }
+
+
+
