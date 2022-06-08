@@ -7,11 +7,9 @@ import at.ac.fhcampuswien.api.NewsApi;
 import at.ac.fhcampuswien.api.NewsApiException;
 import at.ac.fhcampuswien.models.Article;
 import at.ac.fhcampuswien.models.NewsResponse;
+import at.ac.fhcampuswien.models.Source;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class AppController {
@@ -100,25 +98,28 @@ public class AppController {
 
     private List<Article> sortArticles(List<Article> list) {
         return list.stream().sorted((a1,a2) -> {
-            int a1DescriptionSize = a1.getDescription().length();
-            int a2DescriptionSize = a2.getDescription().length();
-
-            if (a1DescriptionSize > a2DescriptionSize || a1DescriptionSize < a2DescriptionSize) {
-                return Integer.compare(a1.getDescription().length(),a2.getDescription().length());
-            } else {
-                return a1.getDescription().compareTo(a2.getDescription());
-            }
+           a1.setDescription(a1.getDescription() != null ? a1.getDescription() : "");
+           a2.setDescription(a2.getDescription() != null ? a2.getDescription() : "");
+           return a1.getDescription().compareTo(a2.getDescription());
         }).collect(Collectors.toList());
     }
 
 
     //region Search
     public String providerWithMostArticles() {
-        getArticles().stream().collect(Collectors.groupingBy(article -> article.getSource()));
-        System.out.print("" +
-                "" +
-                "hallo");
-        return "";
+        Source s = getArticles().stream()
+                .filter(art -> Objects.nonNull(art.getSource()))
+                .collect(Collectors.groupingBy(Article::getSource, Collectors.counting()))
+                .entrySet().stream().max(Map.Entry.comparingByValue())
+                .map(Map.Entry::getKey).orElse(null);
+        return s != null ? s.getName() : "";
+    }
+
+    public String authorWithLongestName() {
+        return getArticles().stream()
+                .map(Article::getAuthor)
+                .filter(Objects::nonNull)
+                .max(Comparator.comparingInt(String::length)).orElse("");
     }
 
     public long getCountOfNewYorkTimes() {

@@ -7,7 +7,11 @@ public class Article {
     private String author;
     private String title;
     private Source source;
-    private String description;
+    private String description = "";
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public Article(String author, String title, Source source, String description) {
         this.author = author;

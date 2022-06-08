@@ -50,21 +50,14 @@ public class Menu {
     }
     private void handleInputSearchLevel(String input) {
         switch (input) {
-            case "a" -> {
-                controller.providerWithMostArticles();
-                this.menulevel = MenuLevel.Search;
-            }
-            case "b" -> {
-                getAllNewsBitcoin(controller);
-                this.menulevel = MenuLevel.Search;
-            }
+            case "a" -> printProviderMostArticles(controller);
+            case "b" -> printAuthorLongestName(controller);
             case "c" -> printCountNewYorkTimes(controller);
             case "d" -> printHeadlineUnder15Chars(controller);
             case "q" -> this.menulevel = MenuLevel.Top;
             default -> printInvalidInputMessage();
         }
     }
-
 
     private void getArticleCount(AppController ctrl) {
 
@@ -83,8 +76,17 @@ public class Menu {
     private void printCountNewYorkTimes(AppController ctrl) {
         System.out.println(ctrl.getCountOfNewYorkTimes());
     }
+
     private void printHeadlineUnder15Chars(AppController ctrl) {
         System.out.println(ctrl.getCountHeadlineUnder15Chars());
+    }
+
+    private void printProviderMostArticles(AppController ctrl) {
+        System.out.println(ctrl.providerWithMostArticles());
+    }
+
+    private void printAuthorLongestName(AppController ctrl) {
+        System.out.println(ctrl.authorWithLongestName());
     }
 
     private static void printExitMessage() {
